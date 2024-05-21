@@ -1,0 +1,26 @@
+name: My Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+      - name: Run tensor_multiplication.py
+        run: python tensor_multiplication.py
+      - name: Run rmse.py
+        run: python rmse.py
+      - name: Run numeric_derivation.py
+        run: python numeric_derivation.py
